@@ -28,7 +28,7 @@ git checkout -b onboarding/<ваше-имя>
 
 2. Прочитайте постановку лабы
 Постановки лежат в docs/labs/. Например, для первой лабы:
-docs/labs/lab01-shortlink.md.
+docs/labs/lab01.md.
 
 Там — контракты API, ограничения и корнер-кейсы. Это ваш вход в OpenSpec:
 на основе постановки вы сформулируете proposal.

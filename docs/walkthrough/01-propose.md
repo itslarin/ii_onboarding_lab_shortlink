@@ -5,7 +5,7 @@
 
 ## Шаг 1. Прочитайте постановку
 
-Откройте `docs/labs/lab01-shortlink.md`. Обратите внимание на:
+Откройте `docs/labs/lab01.md`. Обратите внимание на:
 - контракты API (раздел «API-контракты»);
 - таблицу тестовых сценариев `C1–C13` — это ваш критерий приёмки;
 - раздел «Вне scope лабы 01» — что **не** входит в изменение.
@@ -15,10 +15,10 @@
 В чате OpenCode:
 
 ```
-/opsx:propose lab01-shortlink
+/opsx:propose lab01
 ```
 
-Команда создаёт `openspec/changes/lab01-shortlink/` и генерирует
+Команда создаёт `openspec/changes/lab01/` и генерирует
 артефакты. Для `spec-driven` схемы это `proposal.md`, `specs/`,
 `design.md`, `tasks.md` (набор может отличаться в зависимости от версии;
 главное — proposal и tasks).
@@ -32,7 +32,7 @@ AI сгенерирует черновик, но его нужно **отред�
 на шаблон:
 
 ```markdown
-# Change: lab01-shortlink
+# Change: lab01
 
 ## Why
 Сервис коротких ссылок отсутствует. Нужен минимальный API для создания
@@ -70,7 +70,7 @@ in-memory хранилище. Тесты лабы остаются, но сно�
 
 ## ✅ Готово, когда
 
-- [ ] `openspec/changes/lab01-shortlink/` существует
+- [ ] `openspec/changes/lab01/` существует
 - [ ] `proposal.md` содержит `Why`, `What Changes`, `Out of Scope`, `Rollback Plan`
 - [ ] `tasks.md` — чек-лист, покрывающий C1–C13
 - [ ] В `specs/` есть сценарии (Given/When/Then) или требования, покрывающие контракты

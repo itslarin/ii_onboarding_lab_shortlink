@@ -15,7 +15,7 @@ mvn test -Dtest.tags=lab01
 ## Шаг 2. Запустите apply
 
 ```
-/opsx:apply lab01-shortlink
+/opsx:apply lab01
 ```
 
 AI предложит план и начнёт реализацию по `tasks.md`. Вы можете:
