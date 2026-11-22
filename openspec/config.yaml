@@ -1,0 +1,37 @@
+schema: spec-driven
+
+context: |
+  Project: Short Link Service (учебный проект онбординга)
+  Tech stack: Kotlin, Spring Boot, Maven
+  Language level: Kotlin 2.x, JVM 21
+  Build tool: Maven (pom.xml)
+  Testing: JUnit 5, Spring Boot Test, MockMvc
+  API style: REST, JSON
+  Persistence: in-memory (ConcurrentHashMap) в лабе 1
+  Code style: Kotlin Coding Conventions, constructor injection
+  No field injection; DTOs separate from entities
+  Error format: {"error": "..."}
+
+rules:
+  proposal:
+    - Include rollback plan
+    - Identify affected layers (controller / service / storage)
+    - State what is explicitly out of scope
+  specs:
+    - Use Given/When/Then format for scenarios
+    - Reference existing patterns before inventing new ones
+  design:
+    - Show sequence diagram for complex flows
+  tasks:
+    - Break tasks into chunks of max 2 hours
+    - End every task with a commit
+    - Reference the lab tag (e.g., lab01) in verification tasks
+
+operations:
+  apply:
+    guidance:
+      - Run focused tests first (mvn test -Dtest.tags=labNN)
+      - Then run full suite before archive
+  archive:
+    guidance:
+      - Summarize the archive outcome before finishing

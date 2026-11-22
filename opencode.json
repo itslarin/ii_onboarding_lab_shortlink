@@ -1,0 +1,19 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "myrouter": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "My Router",
+      "options": {
+        "baseURL": "https://api.example.com/v1",
+        "apiKey": "{env:OPENCODE_API_KEY}"
+      },
+      "models": {
+        "model-id": {
+          "name": "Model display name"
+        }
+      }
+    }
+  },
+  "model": "myrouter/model-id"
+}
