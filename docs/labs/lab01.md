@@ -79,9 +79,6 @@ Body: отсутствует
 Код передан в другом регистре, чем сохранён	404	{"error": "short code not found"}
 Поиск регистрозависимый (aB3xY9 и ab3xy9 — разные коды).
 
-GET /health — health-check (уже в каркасе)
-200 OK, body: {"status": "UP"}
-
 Ограничения
 Параметр	Правило
 longUrl	not null, not blank, ≤ 2048, начинается с http:// или https://
