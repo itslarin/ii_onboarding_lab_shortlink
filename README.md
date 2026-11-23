@@ -7,7 +7,7 @@
 
 ## Что уже есть в `main`
 
-- Каркас Spring Boot приложения: `Application.kt`, `HealthController` (`GET /health`).
+- Каркас Spring Boot приложения: `Application.kt`.
 - Настройки OpenCode (`opencode.json`) и правила для AI (`AGENTS.md`).
 - Инициализированный OpenSpec (`openspec/config.yaml`).
 - Постановки лаб в `docs/labs/`.
@@ -95,9 +95,6 @@ mvn clean package
 
 # Запуск локально
 mvn spring-boot:run
-
-# Проверка health
-curl http://localhost:8080/health
 ```
 
 # Ссылки
