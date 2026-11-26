@@ -18,7 +18,7 @@
 ## 4. Верификация приёмки
 
 - [x] 4.1 Запустить `mvn test -Dtest.tags=lab01` — все 13 сценариев C1–C13 зелёные (LinkControllerTest + RedirectControllerTest). Commit (если были правки) или пометка «тесты зелёные без правок».
-- [ ] 4.2 Прогнать полный набор `mvn test` — лаб нет, кроме lab01, зелёных тестов достаточно; убедиться, что ничего вне lab01 не затронуто (git diff: только новые файлы в `src/main/kotlin/com/example/shortlink/`). Commit.
+- [x] 4.2 Прогнать полный набор `mvn test` — лаб нет, кроме lab01, зелёных тестов достаточно; убедиться, что ничего вне lab01 не затронуто (git diff: только новые файлы в `src/main/kotlin/com/example/shortlink/`). Commit.
 
 ## Workflow follow-up
 
