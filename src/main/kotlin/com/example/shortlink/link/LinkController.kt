@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
-import jakarta.validation.Valid
 
 @RestController
 class LinkController(
@@ -16,10 +15,8 @@ class LinkController(
 ) {
 
     @PostMapping("/links")
-    fun create(@Valid @RequestBody request: CreateLinkRequest): ResponseEntity<LinkResponse> {
-        // longUrl здесь заведомо не null: @NotBlank на DTO отсекает пустые/отсутствующие.
-        val longUrl = requireNotNull(request.longUrl)
-        val response = service.create(longUrl)
+    fun create(@RequestBody request: CreateLinkRequest): ResponseEntity<LinkResponse> {
+        val response = service.create(request.longUrl)
         return ResponseEntity
             .status(HttpStatus.CREATED)
             .header(HttpHeaders.LOCATION, "/${response.shortCode}")

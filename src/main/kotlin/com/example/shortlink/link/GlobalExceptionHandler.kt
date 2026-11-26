@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.http.converter.HttpMessageNotReadableException
 import org.springframework.web.HttpMediaTypeNotSupportedException
-import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
 import org.springframework.web.servlet.resource.NoResourceFoundException
@@ -19,15 +18,12 @@ class GlobalExceptionHandler {
     private val log = LoggerFactory.getLogger(GlobalExceptionHandler::class.java)
 
     /**
-     * Ошибки валидации DTO: сообщение — из первой field-ошибки,
-     * текст задан в аннотациях CreateLinkRequest дословно по контракту.
+     * Нарушение контракта longUrl: сообщение задано в LinkService
+     * дословно по контракту lab01.
      */
-    @ExceptionHandler(MethodArgumentNotValidException::class)
-    fun handleValidation(e: MethodArgumentNotValidException): ResponseEntity<ErrorResponse> {
-        val message = e.bindingResult.fieldErrors.firstOrNull()?.defaultMessage
-            ?: "validation failed"
-        return badRequest(message)
-    }
+    @ExceptionHandler(InvalidLongUrlException::class)
+    fun handleInvalidLongUrl(e: InvalidLongUrlException): ResponseEntity<ErrorResponse> =
+        badRequest(e.message ?: "longUrl is required")
 
     /** Тело запроса не является валидным JSON. */
     @ExceptionHandler(HttpMessageNotReadableException::class)

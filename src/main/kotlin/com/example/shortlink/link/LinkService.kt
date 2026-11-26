@@ -15,11 +15,12 @@ class LinkService(
     private val log = LoggerFactory.getLogger(LinkService::class.java)
 
     /**
-     * Генерирует Base62-код, при коллизии — до [MAX_GENERATION_ATTEMPTS]
-     * повторных попыток, затем исключение (500 через GlobalExceptionHandler).
+     * Валидация longUrl в порядке контракта (детерминированные сообщения):
+     * null/blank -> схема -> длина.
      */
-    fun create(longUrl: String): LinkResponse {
-        val link = generateUniqueLink(longUrl)
+    fun create(longUrl: String?): LinkResponse {
+        validate(longUrl)
+        val link = generateUniqueLink(longUrl!!)
         repository.save(link)
         log.info("Created short link: {} -> {}", link.shortCode, link.longUrl)
         return LinkResponse(
@@ -30,9 +31,21 @@ class LinkService(
 
     /**
      * Lookup по коду; регистрозависимый (обычный map-lookup).
-     * null — код не найден / не существует (редирект вернёт 404).
+     * null — код не найден (редирект вернёт 404).
      */
     fun resolve(shortCode: String): Link? = repository.findByCode(shortCode)
+
+    private fun validate(longUrl: String?) {
+        if (longUrl == null || longUrl.isBlank()) {
+            throw InvalidLongUrlException("longUrl is required")
+        }
+        if (!longUrl.startsWith("http://") && !longUrl.startsWith("https://")) {
+            throw InvalidLongUrlException("longUrl must start with http:// or https://")
+        }
+        if (longUrl.length > MAX_URL_LENGTH) {
+            throw InvalidLongUrlException("longUrl must be at most 2048 characters")
+        }
+    }
 
     private fun generateUniqueLink(longUrl: String): Link {
         repeat(MAX_GENERATION_ATTEMPTS) {
@@ -51,7 +64,6 @@ class LinkService(
     companion object {
         const val BASE_URL = "http://localhost:8080"
         private const val MAX_GENERATION_ATTEMPTS = 3
+        private const val MAX_URL_LENGTH = 2048
     }
 }
-
-class ShortCodeGenerationException(message: String) : RuntimeException(message)
