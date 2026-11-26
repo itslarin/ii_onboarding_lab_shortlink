@@ -59,7 +59,7 @@ class LinkControllerTest {
                 content = """{"longUrl": "$blank"}"""
             }.andExpect {
                 status { isBadRequest() }
-                jsonPath("$.error") { value("longUrl must not be blank") }
+                jsonPath("$.error") { value("longUrl is required") }
             }
         }
     }
