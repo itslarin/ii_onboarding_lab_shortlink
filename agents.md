@@ -8,8 +8,8 @@
 
 ## Build & Test Commands
 - Сборка: `mvn clean package`
-- Все тесты: `mvn test`
-- Тесты конкретной лабы: `mvn test -Dtest.tags=lab01`
+- Все тесты: `mvn test` (при условии, что в pom.xml верно заполнено property '<test.tags>')
+- Тесты конкретной лабы: при проверке лабы NN ориентироваться на `-Dtest.tags=labNN`, полный набор может содержать красные тесты из предыдущих лаб — это не регрессия
 - Запуск: `mvn spring-boot:run`
 
 ## Code Standards
